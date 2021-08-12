@@ -1,3 +1,4 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "layout_unbranded.html" %} 
 {% block pageTitle %} 
   List of Employees per Department
@@ -5,7 +6,28 @@
  
 {% block content %}
 
-<h2>Employees in {{departmentName}}</h2> 
+{{ govukButton({
+  text: "HR",
+  href: "/per-department/HR"
+}) }}
+{{ govukButton({
+  text: "Sales",
+  href: "/per-department/Sales"
+}) }}
+{{ govukButton({
+  text: "Finance",
+  href: "/per-department/Finance"
+}) }}
+{{ govukButton({
+  text: "BU",
+  href: "/per-department/BU"
+}) }}
+{{ govukButton({
+  text: "Technical",
+  href: "/per-department/Technical"
+}) }}
+
+<h2>Employees in {{departmentName}} ( {{departmentEmployees.length}} )</h2> 
 {% if departmentEmployees and departmentEmployees.length > 0 %} 
 {% set employeerows = [] %} 
 {% for departmentEmployee in departmentEmployees%}
