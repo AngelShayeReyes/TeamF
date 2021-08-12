@@ -38,10 +38,16 @@ router.get('/addemployee', async(req, res)=>{
     var salary = req.body.salary; 
     var bank_detail = req.body.bank_detail; 
     const ni_regex = /^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$/
+    const bank_regex = /^\s*[0-9]{8},\s(?!(?:0{6}|00-00-00))(?:\d{6}|\d\d-\d\d-\d\d)\s*$/
     if ((employee_name)&&(ni_number)&&(employee_address)&&(employee_postcode)&&(salary)&&(bank_detail)) {
-        if(ni_regex.test(ni_number)){ 
-        let insertedKey = await employeedata.addEmployee(req.body) 
-        res.render('list-employees', { employees: await employeedata.getEmployees()} ) 
+        if(ni_regex.test(ni_number)){
+            if(bank_regex.test(bank_detail)){ 
+                let insertedKey = await employeedata.addEmployee(req.body) 
+                res.render('list-employees', { employees: await employeedata.getEmployees()} ) 
+            }else{
+                res.locals.errormessage = "Incorrect bank details format" 
+                res.render('newemployeeform', req.body ) 
+            }
         } else {
             res.locals.errormessage = "Incorrect NI Number format" 
             res.render('newemployeeform', req.body ) 

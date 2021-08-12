@@ -17,7 +17,7 @@
                             id: "employee_name", name: "employee_name", value: data["employee_name"] }) }}
 
 {{ govukInput({ label: { text: "NI Number:", classes: "govuk-label--s", isPageHeading: false }, 
-                            id: "ni_number", name: "ni_number", value: data["ni_number"] }) }}
+                            id: "ni_number", hint: {text: "For example: AA 12 34 56 A"}, name: "ni_number", value: data["ni_number"] }) }}
                             
 {{ govukInput({ label: { text: "Address:", classes: "govuk-label--s", isPageHeading: false },  
                             id: "employee_address", name: "employee_address", value: data["employee_address"] }) }} 
@@ -29,7 +29,7 @@
                             id: "salary", name: "salary", value: data["salary"] }) }} 
 
 {{ govukInput({ label: { text: "Bank Details:", classes: "govuk-label--s", isPageHeading: false }, 
-                            id: "bank_detail", name: "bank_detail", value: data["bank_detail"] }) }} 
+                            id: "bank_detail", hint: {text: "For example: 12345678, 12-34-56"}, name: "bank_detail", value: data["bank_detail"] }) }} 
                         
 {{ govukSelect({id: "is_manager", name: "is_manager",label: {text: "Manager:", classes: "govuk-label--s", isPageHeading: false }, value: data["is_manager"],
                             items: [
