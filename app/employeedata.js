@@ -38,7 +38,7 @@ exports.getSalesEmployees = async () => {
 
 getTopEarner = async (  ) => { 
     return await db.query( 
-        "SELECT *, MAX(total_sales) FROM Employee JOIN SalesEmployee using(employee_id);") 
+        "SELECT * FROM Employee LEFT JOIN SalesEmployee using(employee_id) ORDER BY total_sales DESC LIMIT 1;") 
  }
 
 exports.getTopEarner = async () => { 
