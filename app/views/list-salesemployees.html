@@ -1,0 +1,65 @@
+{% extends "layout_unbranded.html" %} 
+{% block pageTitle %} 
+  List of Sales Employees 
+{% endblock %}
+
+{% block content %}
+
+<script language='javascript'> 
+  function showTopEarner(){ 
+     b = document.getElementById("topEarnerTable"); 
+     b.style="display: block;"; 
+  } 
+  </script>
+
+<h2 id = "headingSales" >List of Sales Employees</h2>
+
+{% if employees and employees.length > 0 %} 
+{% set employeerows = [] %} 
+{% for employee in employees | sort(attribute='employee_name')%} 
+{% set employeerows = (employeerows.push([{ text: employee.employee_id }, {text: employee.employee_name | upper }, {text: employee.employee_address}, 
+                    {text: employee.employee_postcode}, {text: "£" + employee.salary}, {text: employee.bank_detail}, {text: employee.is_manager }, {text: employee.active},
+                     {text: employee.employee_type}, {text: employee.commission_rate + "%"}, {text: "£" + employee.total_sales}]), employeerows) %} 
+{% endfor %} 
+{{govukTable({ 
+    head: [ { text: "ID" },{ text: "Name" },{ text: "Address" }, 
+            { text: "Post Code" },{ text: "Salary" }, {text: "Bank Details"}
+            , {text: "Manager?"}, {text: "Active?"}, {text: "Employee Type"}
+            , {text: "Commission Rate"}, {text: "Total Sales"}], 
+    rows: employeerows }) 
+}} 
+
+{% else %}
+There are no Sales Employees. 
+{% endif %}
+
+<div>
+    
+  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="showTopEarner()" >Show Top Earner</button></div>
+
+<div id="topEarnerTable" style="display: none;">
+  <h2 id = "headingSales">Top Earner</h2>
+  <div >
+  {% if topEarner and topEarner.length > 0 %} 
+  {% set earnerrows = [] %} 
+  {% for earner in topEarner | sort(attribute='name')%} 
+  {% set earnerrows = (earnerrows.push([{ text: earner.employee_id }, {text: earner.employee_name | upper }, {text: earner.employee_address}, 
+                    {text: earner.employee_postcode}, {text:"£" + earner.salary}, {text: earner.bank_detail}, {text: earner.is_manager}, {text: earner.active},
+                      {text: earner.employee_type}, {text: earner.commission_rate + "%"}, {text: "£" + earner.total_sales}]), earnerrows) %} 
+  {% endfor %} 
+  {{govukTable({ 
+    head: [ { text: "ID" },{ text: "Name" },{ text: "Address" }, 
+    { text: "Post Code" },{ text: "Salary" }, {text: "Bank Details"}
+    , {text: "Manager?"}, {text: "Active?"}, {text: "Employee Type"}
+    , {text: "Commission Rate"}, {text: "Total Sales"}], 
+    rows: earnerrows }) 
+  }} 
+
+  {% else %}
+  There is no Top Earner. 
+  {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
