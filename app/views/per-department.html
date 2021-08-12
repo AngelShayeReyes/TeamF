@@ -1,0 +1,21 @@
+{% extends "layout_unbranded.html" %} 
+{% block pageTitle %} 
+  List of Employees per Department
+{% endblock %} 
+ 
+{% block content %}
+
+<h2>Employees in {{departmentName}}</h2> 
+{% if departmentEmployees and departmentEmployees.length > 0 %} 
+{% set employeerows = [] %} 
+{% for departmentEmployee in departmentEmployees%}
+{% set employeerows = (employeerows.push([{ text: departmentEmployee.employee_id }, {text: departmentEmployee.employee_name}]), employeerows) %} 
+{% endfor %} 
+{{govukTable({ 
+    head: [ { text: "Employee ID" },{ text: "Full Name" }], rows: employeerows }) 
+}} 
+{% else %} 
+There are no employees. 
+{% endif %}
+
+{% endblock %}
