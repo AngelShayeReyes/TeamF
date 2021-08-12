@@ -52,22 +52,31 @@ exports.addEmployee = async (newEmployee) => {
 }
 
 
-exports.addEmployee = async (newEmployee) => { 
-    let results = await db.query(`INSERT INTO Employee (employee_name, ni_number, employee_address, employee_postcode, salary, bank_detail, is_manager,active, employee_type) VALUES (${newEmployee.employee_name}, ?, ?, ?, ?, ?,?,?,?)`) 
-    
-    return results.insertId; 
-
-}
-
-
 exports.addSalesEmployee = async (newSalesEmployee) => { 
-    console.log(newSalesEmployee);
-    const justEmployee = {
+    
+    const normalEmployee = {
         employee_id: newSalesEmployee.employee_id,
         employee_name: newSalesEmployee.employee_name,
-        ni_number: newSalesEmployee,
-
+        ni_number: newSalesEmployee.ni_number,
+        employee_address: newSalesEmployee.employee_address,
+        employee_postcode: newSalesEmployee.employee_postcode,
+        salary: newSalesEmployee.salary,
+        bank_detail: newSalesEmployee.bank_detail,
+        is_manager: newSalesEmployee.is_manager,
+        active: newSalesEmployee.active,
+        employee_type: "Sales"
     };
-    let results = await db.query('INSERT INTO SalesEmployee SET ?', newSalesEmployee) 
+
+    let salesID = await this.addEmployee(normalEmployee);
+    console.log(salesID);
+
+    const salesEmployee = {
+        employee_id: salesID,
+        commission_rate: newSalesEmployee.commission_rate,
+        total_sales: newSalesEmployee.total_sales
+    };
+
+    let results = await db.query('INSERT INTO SalesEmployee SET ?', salesEmployee) 
+
     return results.insertId; 
 }
