@@ -1,0 +1,49 @@
+{% extends "layout_unbranded.html" %} 
+{% block pageTitle %} 
+  Navigation
+{% endblock %} 
+ 
+{% block content %}
+
+<h2>Navigation</h2> 
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Use Case 1"
+      },
+      value: {
+        text: "I want to enter employees' details so that the system records their information."
+      },
+      actions: {
+        items: [
+          {
+            href: "/newemployeeform.html",
+            text: "Go"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Use Case 2"
+      },
+      value: {
+        text: "I want to generate a report containing employees per department
+so that BU (business unit) heads can see who is in each department.
+"
+      },
+      actions: {
+        items: [
+          {
+            href: "/per-department/HR",
+            text: "Go"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% endblock %}
