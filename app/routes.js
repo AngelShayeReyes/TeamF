@@ -4,6 +4,10 @@ const employeedata = require('./employeedata.js')
 const departmentdata = require('./departmentdata.js')
 
 // Add your routes here - above the module.exports line
+router.get('/', (req, res) => {
+    res.render('navigation'); 
+});
+
 router.get('/list-employees', async (req, res) => { 
     res.render('list-employees', { employees: await employeedata.getEmployees() } ) 
 });
