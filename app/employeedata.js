@@ -44,3 +44,9 @@ getTopEarner = async (  ) => {
 exports.getTopEarner = async () => { 
     return await getTopEarner(); 
 }
+
+exports.addEmployee = async (newEmployee) => { 
+    let results = await db.query('INSERT INTO Employee SET ?', newEmployee) 
+    return results.insertId; 
+
+}
