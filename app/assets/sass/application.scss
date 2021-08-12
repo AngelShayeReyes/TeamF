@@ -16,3 +16,16 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/related-items";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+h2{
+    color: black;
+}
+
+
+#topEarnerTable {
+    padding-top: 20px;
+}
+
+.govuk-button govuk-button{
+    border: 2px solid black !important;
+}

@@ -26,3 +26,21 @@ getEmployeesAll = async (  ) => {
 exports.getEmployees = async () => { 
     return await getEmployeesAll(); 
 }
+
+getSalesEmployeesAll = async (  ) => { 
+    return await db.query( 
+        "select * from Employee Join SalesEmployee using (employee_id )") 
+ }
+
+exports.getSalesEmployees = async () => { 
+    return await getSalesEmployeesAll(); 
+}
+
+getTopEarner = async (  ) => { 
+    return await db.query( 
+        "SELECT *, MAX(total_sales) FROM Employee JOIN SalesEmployee using(employee_id);") 
+ }
+
+exports.getTopEarner = async () => { 
+    return await getTopEarner(); 
+}
