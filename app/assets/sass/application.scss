@@ -27,8 +27,18 @@ h2{
     padding-top: 20px;
 }
 
-.govuk-button govuk-button{
-    border: 2px solid black !important;
+.govuk-button{
+    border: 2px solid black;
+}
+
+.govuk-button--secondary {
+    box-shadow: none;
+}
+.govuk-button--secondary:active {
+    box-shadow: none;
+}
+.govuk-button--secondary::after {
+    box-shadow: none;
 }
 
    
@@ -41,6 +51,8 @@ h1,h2 { /* Header 1 Colour will be Kainos Blue*/
 h2 {    /* Header 2 Colour will be Kainos Green*/
     color: rgb(90, 153, 71);
     margin: 10px;
+    text-align: center;
+    font-size: 35px;
   }
 
 .header-img {

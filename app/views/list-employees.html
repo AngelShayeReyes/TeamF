@@ -20,7 +20,7 @@
 {% for employee in employees %} 
 {% set employeerows = (employeerows.push([{ text: employee.employee_id }, {text: employee.employee_name}, {text: employee.ni_number}, 
                         {text: employee.employee_address}, {text: employee.employee_postcode},  {text: "£" + employee.salary}, {text: employee.bank_detail}, 
-                        {text: employee.is_manager}, {text: employee.active}, {text: employee.employee_type}]), employeerows) %} 
+                        {text:  "True" if  employee.is_manager else "False"}, {text: "True" if   employee.active else "False"}, {text: employee.employee_type}]), employeerows) %} 
 {% endfor %} 
 {{govukTable({ 
     head: [ { text: "ID" },{ text: "Name" },{ text: "NI Number" }, 

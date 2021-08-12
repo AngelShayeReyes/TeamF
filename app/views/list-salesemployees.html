@@ -27,8 +27,9 @@
 {% set employeerows = [] %} 
 {% for employee in employees | sort(attribute='employee_name')%} 
 {% set employeerows = (employeerows.push([{ text: employee.employee_id }, {text: employee.employee_name | upper }, {text: employee.ni_number}, {text: employee.employee_address}, 
-                    {text: employee.employee_postcode}, {text: "£" + employee.salary}, {text: employee.bank_detail}, {text: employee.is_manager }, {text: employee.active},
-                     {text: employee.employee_type}, {text: employee.commission_rate + "%"}, {text: "£" + employee.total_sales}]), employeerows) %} 
+                    {text: employee.employee_postcode}, {text: "£" + employee.salary}, {text: employee.bank_detail}, {text: "True" if employee.is_manager else "False"},
+                     {text: "True" if employee.active  else "False"},{text: employee.employee_type}, {text: employee.commission_rate + "%"}, {text: "£" + employee.total_sales}]),
+                      employeerows) %} 
 {% endfor %} 
 {{govukTable({ 
     head: [ { text: "ID" },{ text: "Name" }, { text: "NI Number"},{ text: "Address" }, 
@@ -53,7 +54,7 @@ There are no Sales Employees.
   {% set earnerrows = [] %} 
   {% for earner in topEarner | sort(attribute='name')%} 
   {% set earnerrows = (earnerrows.push([{ text: earner.employee_id }, {text: earner.employee_name | upper }, {text: earner.ni_number}, {text: earner.employee_address}, 
-                    {text: earner.employee_postcode}, {text:"£" + earner.salary}, {text: earner.bank_detail}, {text: earner.is_manager}, {text: earner.active},
+                    {text: earner.employee_postcode}, {text:"£" + earner.salary}, {text: earner.bank_detail}, {text: "True" if earner.is_manager else "False"}, {text:  "True" if  earner.active else "False"},
                       {text: earner.employee_type}, {text: earner.commission_rate + "%"}, {text: "£" + earner.total_sales}]), earnerrows) %} 
   {% endfor %} 
   {{govukTable({ 
