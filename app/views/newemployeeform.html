@@ -1,0 +1,68 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+    <title>Add Employee</title> 
+</head> 
+
+<body> 
+    <div class="header-img"></div>
+    <h1>Add Employee</h1>
+
+    <div>
+        {% if errormessage %} 
+        <div class="govuk-error-message">{{ errormessage }}</div> 
+        {% endif %}
+    <form action="/addemployee" method="POST" name="myForm">
+        <!-- <br><label for="employee_id">ID:</label><br>
+        <input type="text" id="employee_id" name="employee_id" placeholder="5001" value="{{employee_id}}"><br><br> -->
+
+        <label for="employee_name">Name:</label><br>
+        <input type="text" id="employee_name" name="employee_name" placeholder="Fullname" value="{{employee_name}}"><br><br>
+
+        <label for="ni_number">NI Number:</label><br>
+        <input type="text" id="ni_number" name="ni_number" placeholder="AA 12 34 56 A" value="{{ni_number}}"><br><br>
+
+        <label for="employee_address">Address:</label><br>
+        <input type="text" id="employee_address" name="employee_address" placeholder="268 Golden Street" value="{{employee_address}}"><br><br>
+
+        <label for="employee_postcode">Postcode:</label><br>
+        <input type="text" id="employee_postcode" name="employee_postcode" placeholder="TD4 6AF" value="{{employee_postcode}}"><br><br>
+
+        <label for="salary">Salary:</label><br>
+        <input type="text" id="salary" name="salary" placeholder="20000" value="{{salary}}"><br><br>
+        
+        <label for="bank_detail">Bank Details:</label><br>
+        <input type="text" id="bank_detail" name="bank_detail" placeholder="12345678, 12-34-56" value="{{bank_detail}}"><br><br>
+
+        <label for="is_manager">Manager:</label>
+        <select id="is_manager" name="is_manager" size="1" >
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="{{is_manager}}"></option>
+        </select><br><br>
+
+        <label for="active">Active:</label>
+        <select id="active" name="active" size="1" >
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="{{active}}"></option>
+        </select><br><br>
+
+        <label for="employee_type">Department:</label>
+        <select id="employee_type" name="employee_type" size="1" >
+            <option value="HR">HR</option>
+            <option value="BU">BU</option>
+            <option value="Technical">Technical</option>
+            <option value="Sales">Sales</option>
+            <option value="Finance">Finance</option>
+            <option value="{{employee_type}}"></option>
+        </select><br><br>
+
+        <input type="submit" onclick="formSubmit()" value="Submit">
+    </form>
+    </div>
+
+</body> 
+</html> 
