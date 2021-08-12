@@ -14,7 +14,7 @@
  
 {% block content %}
 
-<h2>List of Employees</h2> 
+<h2>All Employees( {{employees.length}} )</h2> 
 {% if employees and employees.length > 0 %} 
 {% set employeerows = [] %} 
 {% for employee in employees %} 

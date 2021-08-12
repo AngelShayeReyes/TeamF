@@ -5,76 +5,22 @@
  
 {% block content %}
 
-<h2>Navigation</h2> 
+<img class="header-img" src="/public/images/KainosHeader.jpeg" alt="User icon">
+<h2>Welcome to the Dashboard</h2> 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-{{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Use Case 1"
-      },
-      value: {
-        text: "I want to enter employees' details so that the system records their information."
-      },
-      actions: {
-        items: [
-          {
-            href: "/newemployeeform.html",
-            text: "Go"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Use Case 2"
-      },
-      value: {
-        text: "I want to generate a report containing employees per department
-        so that BU (business unit) heads can see who is in each department."
-      },
-      actions: {
-        items: [
-          {
-            href: "/per-department/HR",
-            text: "Go"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Use Case N/A"
-      },
-      value: {
-        text: "I want to view all employees."
-      },
-      actions: {
-        items: [
-          {
-            href: "/list-employees",
-            text: "Go"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Use Case 5"
-      },
-      value: {
-        text: "I want to view sales employees and find the top earner in sales."
-      },
-      actions: {
-        items: [
-          {
-            href: "/list-salesemployees",
-            text: "Go"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
+<h3>Add Employee:</h3>
+<ul> 
+    <li><h4><a href="/newemployeeform.html" title="Add General Employee">Other Employee</a></h4></li> 
+    <li><h4><a href="/newsalesemployeeform.html" title="Add Sales Employee">Sales Employee</a></h4></li> 
+</ul>
+
+<h3>View Employees:</h3>
+<ul> 
+    <li><h4><a href="/list-employees" title="View All Employees">All Employees</a></h4></li> 
+    <li><h4><a href="/per-department/HR" title="View Employees by Department">By Department</a></h4></li> 
+    <li><h4><a href="/list-salesemployees" title="View Sales Employees and Top Earner">Employee wth Highest Sales Total</a></h4></li> 
+</ul>
+
+
 {% endblock %}

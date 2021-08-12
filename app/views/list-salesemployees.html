@@ -21,7 +21,7 @@
   } 
   </script>
 
-<h2 id = "headingSales" >List of Sales Employees</h2>
+<h2 id = "headingSales" >Sales Employees( {{employees.length}} )</h2>
 
 {% if employees and employees.length > 0 %} 
 {% set employeerows = [] %} 
@@ -60,7 +60,7 @@ There are no Sales Employees.
   {{govukTable({ 
     head: [ { text: "ID" },{ text: "Name" }, { text: "NI Number"},{ text: "Address" }, 
     { text: "Post Code" },{ text: "Salary" }, {text: "Bank Details"}
-    , {text: "Manager?"}, {text: "Active?"}, {text: "Employee Type"}
+    , {text: "Manager"}, {text: "Active"}, {text: "Employee Type"}
     , {text: "Commission Rate"}, {text: "Total Sales"}], 
     rows: earnerrows }) 
   }} 
