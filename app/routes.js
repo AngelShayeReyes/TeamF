@@ -78,7 +78,7 @@ router.post('/addsalesemployee', async(req, res) => {
         if(ni_regex.test(ni_number)){
             if(bank_regex.test(bank_detail)){ 
                 let insertedKey = await employeedata.addSalesEmployee(req.body) 
-                res.render('list-salesemployees', { employees: await employeedata.getEmployees()} ) 
+                res.render('list-salesemployees', { employees: await employeedata.getSalesEmployees(), topEarner: await employeedata.getTopEarner()} ) 
             }else{
                 res.locals.errormessage = "Incorrect bank details format" 
                 res.render('newsalesemployeeform', req.body ) 
