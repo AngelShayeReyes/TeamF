@@ -29,7 +29,7 @@ router.get('/addemployee', async(req, res)=>{
 
 
 router.get('/addsalesemployee', async(req, res)=>{ 
-    res.render('newsalesemployeeform', { employees: await employeedata.getEmployees() } ); 
+    res.render('newsalesemployeeform', { employees: await employeedata.getSalesEmployees(), topEarner: await employeedata.getTopEarner()  } ); 
 });
 
 
