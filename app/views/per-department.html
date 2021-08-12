@@ -4,6 +4,15 @@
   List of Employees per Department
 {% endblock %} 
  
+{% block beforeContent %}
+    {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+    {{ govukBackLink({
+    text: "Back",
+    href: "/"
+    }) }}
+{% endblock %}
+
 {% block content %}
 
 {{ govukButton({
