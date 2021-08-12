@@ -19,7 +19,6 @@ router.get('/list-salesemployees', async (req, res) => {
 });
 
 
-
 router.get('/per-department/:department', async (req, res) => {
     res.render('per-department', { departmentEmployees: await departmentdata.getEmployeesInDepartment(req.params.department), departmentName: req.params.department} ); 
 });
@@ -28,7 +27,14 @@ router.get('/addemployee', async(req, res)=>{
     res.render('newemployeeform', { employees: await employeedata.getEmployees() } ); 
   });
 
-  router.post('/addemployee', async(req, res) => { 
+
+router.get('/addsalesemployee', async(req, res)=>{ 
+    console.log(res);
+    res.render('newsalesemployeeform', { employees: await employeedata.getEmployees() } ); 
+});
+
+
+router.post('/addemployee', async(req, res) => { 
     var employee = req.body 
     // validate here 
     var employee_name = req.body.employee_name; 
@@ -56,7 +62,7 @@ router.get('/addemployee', async(req, res)=>{
         res.locals.errormessage = "Missing field" 
         res.render('newemployeeform', req.body ) 
         }
-    })
+})
 
 module.exports = router
 

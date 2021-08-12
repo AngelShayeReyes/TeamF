@@ -1,0 +1,83 @@
+
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %} 
+  Add Sales Employee
+{% endblock %} 
+ 
+{% block content %}
+
+<h2>Add Sales Employee</h2> 
+{% if errormessage %}
+<div style="font-weight: bold; color:red;" class="govuk-error-message">{{ errormessage }}</div> 
+{% endif %}
+<form method="POST" action="addsalesemployee">
+
+{{ govukSelect({id: "employee_type", name: "employee_type",label: {text: "Department:", classes: "govuk-label--s", isPageHeading: false }, value: data["employee_type"],
+                            items: [
+                                {
+                                value: "Sales",
+                                text: "Sales"
+                                }
+                            ]
+                            }) }}
+                            
+{{ govukInput({ label: { text: "Employee ID:", classes: "govuk-label--s", isPageHeading: false }, 
+                        id: "employee_id", name: "employee_id", value: data["employee_id"] }) }}
+
+{{ govukInput({ label: { text: "Name:", classes: "govuk-label--s", isPageHeading: false }, 
+                            id: "employee_name", name: "employee_name", value: data["employee_name"] }) }}
+
+{{ govukInput({ label: { text: "NI Number:", classes: "govuk-label--s", isPageHeading: false }, 
+                            id: "ni_number", hint: {text: "For example: AA 12 34 56 A"}, name: "ni_number", value: data["ni_number"] }) }}
+                            
+{{ govukInput({ label: { text: "Address:", classes: "govuk-label--s", isPageHeading: false },  
+                            id: "employee_address", name: "employee_address", value: data["employee_address"] }) }} 
+
+{{ govukInput({ label: { text: "Postcode:", classes: "govuk-label--s", isPageHeading: false }, 
+                            id: "employee_postcode", name: "employee_postcode", value: data["employee_postcode"] }) }} 
+
+{{ govukInput({ label: { text: "Salary:", classes: "govuk-label--s", isPageHeading: false }, 
+                            id: "salary", name: "salary", value: data["salary"] }) }} 
+
+{{ govukInput({ label: { text: "Bank Details:", classes: "govuk-label--s", isPageHeading: false }, 
+                            id: "bank_detail", hint: {text: "For example: 12345678, 12-34-56"}, name: "bank_detail", value: data["bank_detail"] }) }} 
+                        
+{{ govukSelect({id: "is_manager", name: "is_manager",label: {text: "Manager:", classes: "govuk-label--s", isPageHeading: false }, value: data["is_manager"],
+                            items: [
+                              {
+                                value: "No",
+                                text: "No",
+                                selected: true
+                              },
+                              {
+                                value: "Yes",
+                                text: "Yes"
+                              }
+                            ]
+                          }) }}
+
+{{ govukSelect({id: "active", name: "active",label: {text: "Active:", classes: "govuk-label--s", isPageHeading: false }, value: data["active"],
+                          items: [
+                            {
+                              value: "No",
+                              text: "No",
+                              selected: true
+                            },
+                            {
+                              value: "Yes",
+                              text: "Yes"
+                            }
+                          ]
+                        }) }}
+
+{{ govukInput({ label: { text: "Commission Rate:", classes: "govuk-label--s", isPageHeading: false }, 
+id: "commission_rate", name: "commission_rate", value: data["commission_rate"] }) }} 
+
+{{ govukInput({ label: { text: "Total Sales:", classes: "govuk-label--s", isPageHeading: false }, 
+                        id: "total_sales", name: "total_sales", value: data["total_sales"] }) }} 
+
+
+{{ govukButton({ text: "Submit" }) }}
+</form>
+{% endblock %}

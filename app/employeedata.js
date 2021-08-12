@@ -50,3 +50,24 @@ exports.addEmployee = async (newEmployee) => {
     return results.insertId; 
 
 }
+
+
+exports.addEmployee = async (newEmployee) => { 
+    let results = await db.query(`INSERT INTO Employee (employee_name, ni_number, employee_address, employee_postcode, salary, bank_detail, is_manager,active, employee_type) VALUES (${newEmployee.employee_name}, ?, ?, ?, ?, ?,?,?,?)`) 
+    
+    return results.insertId; 
+
+}
+
+
+exports.addSalesEmployee = async (newSalesEmployee) => { 
+    console.log(newSalesEmployee);
+    const justEmployee = {
+        employee_id: newSalesEmployee.employee_id,
+        employee_name: newSalesEmployee.employee_name,
+        ni_number: newSalesEmployee,
+
+    };
+    let results = await db.query('INSERT INTO SalesEmployee SET ?', newSalesEmployee) 
+    return results.insertId; 
+}
