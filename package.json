@@ -39,7 +39,7 @@
     "marked": "^2.0.0",
     "mysql": "^2.18.1",
     "notifications-node-client": "^4.7.2",
-    "nunjucks": "^3.2.1",
+    "nunjucks": "^3.2.3",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",
     "sync-request": "^6.0.0",
